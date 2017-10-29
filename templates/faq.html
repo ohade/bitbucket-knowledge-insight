@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Insight</title>
+  <!-- you can insert your company image here -->
+  <!--<link rel="icon" href="../static/logo.png">-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.medal {
+    background: #dddddd;
+    border-radius: 50px;
+    font-size: 20px;
+}
+.t_name {
+    width: 150px;
+    font-size: 15px;
+}
+.wrap {
+    width: 100%;
+    overflow:auto;
+}
+
+.fleft {
+    float:left;
+    width: 35%;
+}
+
+.fleft-faq {
+    float:left;
+    width: 60%;
+}
+
+.fcenter{
+    float:left;
+    width: 50%;
+    margin-left:20%;
+}
+
+.fright {
+  float: right;
+    width: 5%;
+}
+
+#inner {
+  display: table;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body class="w3-light-grey">
+
+  <!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right">
+    <!-- Todo: you can put your company picture here -->
+   <img src="" alt="Logo" style="width:35px;height:35px;"/>
+  </span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="/static/people/{{ my_photo_id }}" class="w3-circle w3-margin-right" style="width:46px">
+    </div>
+    <div class="w3-col s8 w3-bar">
+        <span>Welcome, <strong>{{ my_name }}</strong></span><br>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+      </div>
+    </div>
+    <hr>
+    <div class="w3-container">
+      <h5>Dashboard</h5>
+    </div>
+    <div class="w3-bar-block">
+      <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+      <a href="../getMyPage" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Personal Contirbution</a>
+      <a href="../getSearchByPerson" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Search By Person</a>
+      <a href="../getSearchByArea" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Search By Area</a>
+      <a href="../getTopContributors" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Top Contributors</a>
+      <a href="../getTopPullRequesters" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Top "pull requesters"</a>
+      <a href="../getHeatmap" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  Code Heatmap</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-diamond fa-fw"></i>  FAQ</a>
+    </div>
+  </nav>
+
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+    <div class="wrap">
+      <div class="fleft"></div>
+      <div class="fcenter"><img style="width:484px;height:228px;" src="../static/faq.png"></img></div>
+      <div class="fright"></div>
+      </br>
+      </br>
+      <div class="fleft-faq">
+        <ul>
+          <li><p style="font-size:150%;font-weight:bold">Why?</p><p style="padding-left:5em">Short answer: i needed to know who can review my pull request, and wanted to stop having to ask the same two person i knew when i just got to my company</p></li>
+          <li><p style="font-size:150%;font-weight:bold">How?</p><p style="padding-left:5em">Python, <p><p style="padding-left:5em">Frontend: Flask + google charts + w3c template + various scripts,</p><p style="padding-left:5em">backend: query <a href="https://developer.atlassian.com/static/rest/bitbucket-server/latest/bitbucket-rest.html">bitbucket rest api</a></p></li>
+          <li><p style="font-size:150%;font-weight:bold">What's the top Contributors?</p><p style="padding-left:5em">It's a very simply, very naive way to rank people by the amount of tickets that the person is market as its assignee</p></li>
+          <li><p style="font-size:150%;font-weight:bold">What's the top 'pull requester'?</p><p style="padding-left:5em">The people that get asked for pull request</p></li>
+          <li><p style="font-size:150%;font-weight:bold">What's that weird water meter watch when i search for a person?</p><p style="padding-left:5em">Its from google charts: gauge, and again it's a very simply, very naive indicator to the responsivness of a person to approve a pull request, simply divided amount of approved ticket by the total tickets asked from that person</p></li>
+          <li><p style="font-size:150%;font-weight:bold">When can we see the...?</p><p style="padding-left:5em">Its a work in progress</p></li>
+          <li><p style="font-size:150%;font-weight:bold">The information is wrong</p><p style="padding-left:5em">Possibly. sorry for that, one option is that for some of the repos the user/password used does not have permission to query. But most likely, i have bugs in my code, let me know and if you can send some way to validate that, send that too.<p></li>
+          <li><p style="font-size:150%;font-weight:bold">You should add...</p><p style="padding-left:5em">I would love to get your feedback, send it to my mail<p></li>
+        </ul>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-16 w3-light-grey">
+    </footer>
+
+    <!-- End page content -->
+  </div>
+
+  <script>
+  // Get the Sidebar
+  var mySidebar = document.getElementById("mySidebar");
+
+  // Get the DIV with overlay effect
+  var overlayBg = document.getElementById("myOverlay");
+
+  // Toggle between showing and hiding the sidebar, and add overlay effect
+  function w3_open() {
+      if (mySidebar.style.display === 'block') {
+          mySidebar.style.display = 'none';
+          overlayBg.style.display = 'none';
+      } else {
+          mySidebar.style.display = 'block';
+          overlayBg.style.display = 'block';
+      }
+  }
+
+  // Close the sidebar with the close button
+  function w3_close() {
+      mySidebar.style.display = 'none';
+      overlayBg.style.display = 'none';
+  }
+  </script>
+
+</body>
+</html>

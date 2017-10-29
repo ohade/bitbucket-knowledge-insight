@@ -99,3 +99,8 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# current project
+/flask_session
+/pickles
+.idea/

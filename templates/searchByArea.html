@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insight</title>
+    <!-- you can insert your company image here -->
+    <!--<link rel="icon" href="../static/logo.png">-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/themes/default/style.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jstree/3.3.3/jstree.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<style>
+
+html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+.medal {
+    background: #dddddd;
+    border-radius: 50px;
+    font-size: 20px;
+}
+.t_name {
+    width: 150px;
+    font-size: 15px;
+}
+.wrap {
+    width: 100%;
+    overflow:auto;
+}
+
+.fleft {
+    float:left;
+    width: 25%;
+    /*border-right:2px blue solid;*/
+   /*height: 400px;        */
+}
+
+.fright {
+  float: right;
+    width: 50%;
+}
+
+.fleft_big {
+    float:left;
+    width: 50%;
+    /*border-right:2px blue solid;*/
+   /*height: 400px;        */
+}
+
+.fright_big {
+float: right;
+    width: 49%;
+}
+
+#inner {
+  display: table;
+  margin: 0 auto;
+}
+</style>
+</head>
+<body class="w3-light-grey">
+
+  <!-- Top container -->
+<div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+  <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+  <span class="w3-bar-item w3-right">
+    <!-- Todo: you can put your company picture here -->
+   <img src="" alt="Logo" style="width:35px;height:35px;"/>
+  </span>
+</div>
+
+<!-- Sidebar/menu -->
+<nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+  <div class="w3-container w3-row">
+    <div class="w3-col s4">
+      <img src="/static/people/{{ my_photo_id }}" class="w3-circle w3-margin-right" style="width:46px">
+    </div>
+    <div class="w3-col s8 w3-bar">
+        <span>Welcome, <strong>{{ my_name }}</strong></span><br>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+        <a href="#" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+      </div>
+    </div>
+    <hr>
+    <div class="w3-container">
+      <h5>Dashboard</h5>
+    </div>
+    <div class="w3-bar-block">
+      <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+      <a href="../getMyPage" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Personal Contirbution</a>
+      <a href="../getSearchByPerson" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i>  Search By Person</a>
+      <a href="#" class="w3-bar-item w3-button w3-padding  w3-blue"><i class="fa fa-bell fa-fw"></i>  Search By Area</a>
+      <a href="../getTopContributors" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i>  Top Contributors</a>
+      <a href="../getTopPullRequesters" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i>  Top "pull requesters"</a>
+      <a href="../getHeatmap" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  Code Heatmap</a>
+      <a href="../getFaq" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i>  FAQ</a>
+    </div>
+  </nav>
+
+
+  <!-- Overlay effect when opening sidebar on small screens -->
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+  <!-- !PAGE CONTENT! -->
+  <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+
+    <div class="wrap">
+      <div class="fleft_big">
+        <!-- Header -->
+        <header class="w3-container" style="padding-top:22px">
+          <h5><b><i class="fa fa-dashboard"></i> Search by area</b></h5>
+        </header>
+        <form id="s">
+          <input type="search" id="q" />
+          <button type="submit">Search</button>
+        </form>
+        <div id="container"></div>
+      </div>
+      <div class="fright_big">
+        </br>
+        <div class="add_here"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-16 w3-light-grey">
+    </footer>
+
+    <!-- End page content -->
+  </div>
+
+  <script>
+  // Get the Sidebar
+  var mySidebar = document.getElementById("mySidebar");
+
+  // Get the DIV with overlay effect
+  var overlayBg = document.getElementById("myOverlay");
+
+  // Toggle between showing and hiding the sidebar, and add overlay effect
+  function w3_open() {
+      if (mySidebar.style.display === 'block') {
+          mySidebar.style.display = 'none';
+          overlayBg.style.display = 'none';
+      } else {
+          mySidebar.style.display = 'block';
+          overlayBg.style.display = 'block';
+      }
+  }
+
+  // Close the sidebar with the close button
+  function w3_close() {
+      mySidebar.style.display = 'none';
+      overlayBg.style.display = 'none';
+  }
+  </script>
+
+  <script type="text/javascript">
+  function goToPerson(div) {
+    window.location.href = "/getSearchByPerson/" + div.getAttribute("data-id")
+  };
+
+  function drawSpecificTable(path) {
+    google.charts.load('current', {'packages':['table']});
+    google.charts.setOnLoadCallback(drawTable);
+    function drawTable() {
+      var counter = 0;
+      var result = "";
+      var data = new google.visualization.DataTable();
+
+      var area_knowledge_list_json = JSON.parse('{{ area_knowledge_map|tojson }}');
+
+      for (i = 0; i < area_knowledge_list_json.length; i++) {
+        if ( area_knowledge_list_json[i].area == path ) {
+          var peoples = area_knowledge_list_json[i].peoples;
+          if ( peoples.length == 1 ) {
+            data.addColumn('string', 'Only one person knows that area');
+          } else {
+            data.addColumn('string', peoples.length.toString() + ' people know that area');
+          }
+          for (i = 0; i < peoples.length; i++) {
+            if( peoples[i].photo_id == null ) {
+              result += '<div class="fleft" data-id="'+ peoples[i].name +'" onclick="goToPerson(this);"><div id="inner"><img class="medal" src="./static/people/smily_face.png" alt="Smiley face" width="90" height="90"></br><p class="t_name">' + peoples[i].name + '</p></div></div>';
+            } else {
+              result += '<div class="fleft" data-id="' + peoples[i].name + '" onclick="goToPerson(this);"><div id="inner"><img class="medal" src="./static/people/' + peoples[i].photo_id + '" alt="Smiley face" width="90" height="90"></div></br><div id="inner"><p class="t_name">' + peoples[i].name + '</p></div></div>';
+            }
+            var row_index = '"' + peoples[i].photo_id + '"';
+            counter += 1;
+            if (counter  == 4) {
+              data.addRow([{v: row_index, f: result}]);
+              counter = 0;
+              result = "";
+            }
+          }
+          if ( result != "" ) {
+            data.addRow([{v: row_index, f: result}]);
+            counter = 0;
+            result = "";
+          }
+          var table = new google.visualization.Table(document.getElementById("pictures"));
+          table.draw(data, {allowHtml:true, showRowNumber: false, width: '100%', height: '100%'});
+          break
+        }
+      }
+    }
+  }
+  </script>
+  <script>
+  $('#container').jstree({
+    'core' : {
+        'data' : {{ tree_view|safe }}
+    },
+    "plugins" : ["search"]
+});
+
+$("#s").submit(function(e) {
+  e.preventDefault();
+  $("#container").jstree(true).search($("#q").val());
+});
+
+$( 'div.add_here' ).add('<div id="pictures"></div>').appendTo('div.fright_big');
+drawSpecificTable("Root");
+
+$('#container').on("changed.jstree", function (e, data) {
+  var div_id = data.instance.get_path(data.selected[0])
+  $('div#pictures').remove();
+  $( 'div.add_here' ).add('<div id="pictures"></div>').appendTo('div.fright_big');
+  drawSpecificTable(data.instance.get_path(data.selected[0]));
+  $('html, body').animate({scrollTop:0}, 'slow');
+});
+  </script>
+</body>
+</html>
