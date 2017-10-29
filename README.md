@@ -26,7 +26,7 @@ The page available are:
 
 Personal contribution page
 --------------------
-![Personal contribution page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/myContribution.png)
+![Personal contribution page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/personalContribution.png)
 
 Contributor page
 ----------------
