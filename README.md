@@ -24,6 +24,10 @@ python bitbucket_knowledge_insight.py
 
 The page available are:
 
+Personal contribution page
+--------------------
+![Personal contribution page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/myContribution.png)
+
 Contributor page
 ----------------
 
