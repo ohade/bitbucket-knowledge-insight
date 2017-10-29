@@ -88,7 +88,7 @@ class Refresher(object):
                 result = list()
                 print "In: " + project_name + ", repo: " + slug
                 bitbucket_query = bitbucket_prefix + "projects/" + project_name + "/repos/" + slug + "/pull-requests?state=ALL&order=NEWEST&limit=100&start={}"
-                self._bitbucket_caller(bitbucket_query, self._ticket_update, result, True)
+                self._bitbucket_caller(bitbucket_query, self._ticket_update, result)
                 self._full_ticket_info[(project_name, slug)] = result
 
     def _extract_all_ticket_ids(self):
@@ -238,11 +238,11 @@ class Refresher(object):
         AreaKnowledgeFactory.update_photo(self._area_knowledge_map, self._persons)
         self._area_knowledge_map = dict(self._area_knowledge_map)
 
-    def _bitbucket_caller(self, url, result_updater, result, check_here=False):
+    def _bitbucket_caller(self, url, result_updater, result):
         index = 0
-        total_size=0
-        next_page_start=0
-        is_last_page=False
+        total_size = 0
+        next_page_start = 0
+        is_last_page = False
 
         while not is_last_page:
             bitbucket_query = url.format(next_page_start)
@@ -252,21 +252,6 @@ class Refresher(object):
                 res_json = json.loads(curr_res)
             except:
                 print "Problem with " + curr_res
-
-            # used to take only the ticket up to a specific date
-            ###################
-            if check_here:
-                values = res_json.get('values', None)
-                new_values = []
-                if values:
-                    for v in values:
-                        created_date = v.get('createdDate', None)
-                        if created_date and created_date < 1508619600000:
-                            pass
-                        else:
-                            new_values.append(v)
-                    res_json['values'] = new_values
-            ###################
 
             result_updater(result, res_json)
 

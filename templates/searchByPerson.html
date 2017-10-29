@@ -163,7 +163,7 @@ function drawChart() {
     <div>
       {% if found %}
       <div class="pedding">
-        <h4><b><i class="fa fa-dashboard"></i> {{ searched_name }} Code Contribution</b></h5>
+        <h5><b><i class="fa fa-dashboard"></i> {{ searched_name }} Code Contribution</b></h5>
         <div><img class="medal" src="../static/people/{{ photo_id }}" alt="Smiley face" width="100" height="100"></div>
         </br>
         <div><h4>Pull request responsiveness</h4></div>
@@ -173,7 +173,7 @@ function drawChart() {
       {% endif %}
 
       {% if not found and searched_name %}
-        <h4><b><i class="fa fa-dashboard"></i> Could not find {{ searched_name }} Contribution</b></h5>
+        <h5><b><i class="fa fa-dashboard"></i> Could not find {{ searched_name }} Contribution</b></h5>
       {% endif %}
     </div>
 
