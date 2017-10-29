@@ -2,6 +2,13 @@
 Code project insight using bitbucket API
 
 
+The tool is built using Bitbucket rest api, allows:
+1. See a person code contribution to the company.
+2. View colleague's contribution in term of code contribution and pull request approved by him. and the measure of that person responsiveness to approving pull request.
+3. Search by area to find the people who are familiar with that area.
+4. See rank of the people in the company in term of pull request opened on him/here, and code contribution done by him/here.
+
+
 To view the information you first need to collect it:
 go to connection_info.py file and add user name/password path to your bitbucket
 Then simply run:
