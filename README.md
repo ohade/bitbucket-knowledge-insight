@@ -4,31 +4,31 @@ Code project insight using bitbucket API
 
 After letting the tool to collect the information you can view the result in the website
 
-      Top Contributors page
--------------------------------------
+Top Contributors page
+---------------------
 
-![Top Contributors page]https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/topContributors.png
-
-
-      Top pull requesters page
--------------------------------------
-
-![Top pull requesters page]https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/pullRequesters.png
+![Top Contributors page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/topContributors.png)
 
 
-      Search by area page
--------------------------------------
+Top pull requesters page
+------------------------
 
-![Search by area page]https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/searchByArea.png
+![Top pull requesters page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/pullRequesters.png)
 
 
-      Contributor page
--------------------------------------
+Search by area page
+-------------------
 
-![Contributor page]https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/contributor.png
+![Search by area page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/searchByArea.png)
+
+
+Contributor page
+----------------
+
+![Contributor page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/contributor.png)
 
 
 Contribution view in contributor page
 -------------------------------------
 
-![Contribution page]https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/contribution.png
+![Contribution page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/contribution.png)
