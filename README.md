@@ -24,6 +24,24 @@ python bitbucket_knowledge_insight.py
 
 The page available are:
 
+Contributor page
+----------------
+
+![Contributor page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/contributor.png)
+
+
+Contribution view in contributor page
+-------------------------------------
+
+![Contribution page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/contribution.png)
+
+
+Search by area page
+-------------------
+
+![Search by area page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/searchByArea.png)
+
+
 Top Contributors page
 ---------------------
 
@@ -36,19 +54,4 @@ Top pull requesters page
 ![Top pull requesters page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/pullRequesters.png)
 
 
-Search by area page
--------------------
 
-![Search by area page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/searchByArea.png)
-
-
-Contributor page
-----------------
-
-![Contributor page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/contributor.png)
-
-
-Contribution view in contributor page
--------------------------------------
-
-![Contribution page](https://raw.githubusercontent.com/ohade/bitbucket-knowledge-insight/master/doc/contribution.png)
